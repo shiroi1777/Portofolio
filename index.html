@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - About me</title>
+    <link rel="stylesheet" href="normalize.css"> 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #323444;
+            --text-color: #dcdcdc;
+            --green: #87d700;
+            --yellow: #ffaf00;
+            --blue: #5fafff;
+            --code-bg: #282c34;
+            --border-color: #4a4a4a;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Source Code Pro', monospace; 
+            line-height: 1.6;
+            margin: 0;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header, footer {
+            text-align: center;
+        }
+
+        .ascii-art {
+            white-space: pre;
+            font-size: 1em;
+            font-weight: bold;
+            color: var(--text-color);
+            margin-bottom: 1rem;
+        }
+
+        .unit {
+            color: var(--yellow);
+        }
+
+        .nav-links a {
+            color: var(--green);
+            text-decoration: none;
+            margin: 0 0.5em;
+        }
+        
+        .nav-links a:hover {
+            text-decoration: underline;
+        }
+
+        .nav-links .yellow { color: var(--yellow); }
+        .nav-links .blue { color: var(--blue); }
+
+        main {
+            margin-top: 3rem;
+        }
+
+        .path {
+            margin-bottom: 2rem;
+        }
+
+        .path .tilde {
+            color: var(--blue);
+            font-weight: bold;
+        }
+        
+        h1, h2, h3 {
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        h1::before, h2::before {
+            color: var(--green);
+            font-weight: bold;
+            margin-right: 0.5em;
+        }
+        
+        h3 {
+            color: var(--yellow);
+        }
+
+        h1::before {
+            content: "#";
+        }
+        
+        h2::before {
+            content: "##";
+        }
+        
+        h1 {
+            font-size: 2em;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid var(--blue); 
+        }
+        
+        p, .challenge-description, ul {
+            margin-bottom: 1rem;
+        }
+
+        ul {
+            list-style-type: none; 
+            padding-left: 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+        
+        a {
+            color: var(--blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        code {
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+
+        pre {
+            background-color: var(--code-bg);
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        pre code {
+            padding: 0;
+            background-color: transparent;
+            border-radius: 0;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border: 1px solid var(--border-color);
+        }
+
+        .flag {
+            background-color: var(--code-bg);
+            color: var(--yellow);
+            font-weight: bold;
+            padding: 0.5em 1em;
+            border-radius: 3px;
+            display: inline-block;
+            word-break: break-all;
+        }
+        
+        hr {
+            border: 0;
+            height: 1px;
+            background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--border-color), rgba(0, 0, 0, 0));
+            margin: 3rem 0;
+        }
+        
+        footer p {
+            font-size: 0.9em;
+        }
+
+        footer a {
+            color: var(--green);
+            text-decoration: none;
+        }
+        
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-card {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-card h3 {
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            color: var(--green); 
+        }
+        
+        .skill-card p {
+            margin-bottom: 0;
+            font-size: 0.9em;
+        }
+
+        .contact-list {
+        list-style: none;
+        padding-left: 0;
+        }
+
+        .contact-list li {
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        }
+
+        .contact-list .contact-label {
+        color: var(--yellow);
+        font-weight: bold;
+        margin-right: 1em;
+        flex-shrink: 0;
+        }
+
+        .writeup-card {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--text-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            max-width: 100%;
+            min-height: 260px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .writeup-card h3 {
+            color: var(--blue);
+            margin-top: 0;
+        }
+
+        .writeup-card .tags {
+            margin: 1rem 0;
+        }
+
+        .writeup-card .tag {
+            display: inline-block;
+            background: #222;
+            color: var(--blue);
+            border-radius: 4px;
+            padding: 0.2em 0.7em;
+            font-size: 0.85em;
+            margin-right: 0.5em;
+            margin-bottom: 0.3em;
+            font-weight: bold;
+        }
+
+        .writeup-link {
+            color: var(--green);
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .writeup-link:hover {
+            text-decoration: underline;
+        }
+
+        .writeups-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .education-column h3 {
+            color: var(--text-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.2em;
+        }
+
+        .edu-info-card {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            min-height: 160px;
+        }
+
+        .edu-highlight-text {
+            color: var(--blue);
+            font-weight: bold;
+        }
+
+        .edu-main-text {
+            color: var(--text-color);
+            font-weight: bold;
+            font-size: 1.1em;
+            margin: 0.5rem 0;
+        }
+
+        .edu-sub-text {
+            color: #a0a0a0;
+            font-size: 0.9em;
+            margin: 0;
+        }
+
+        .edu-info-card ul {
+            padding-left: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        .edu-info-card li {
+            margin-bottom: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .edu-info-card li:last-child {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .education-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+
+
+
+    <div class="container">
+        <header>
+            <div class="ascii-art">
+//  ________  ________  ________  ___  ___  _________       _____ ______   _______     
+// |\   __  \|\   __  \|\   __  \|\  \|\  \|\___   ___\     |\   _ \  _   \|\  ___ \    
+// \ \  \|\  \ \  \|\ /\ \  \|\  \ \  \\\  \|___ \  \_|     \ \  \\\__\ \  \ \   __/|   
+//  \ \   __  \ \   __  \ \   \\\  \ \  \\\  \   \ \  \       \ \  \\|__| \  \ \  \_|/__ 
+//   \ \  \ \  \ \  \|\  \ \  \\\  \ \  \\\  \   \ \  \       \ \  \    \ \  \ \  \_|\ \
+//    \ \__\ \__\ \_______\ \_______\ \_______\   \ \__\       \ \__\    \ \__\ \_______\
+//     \|__|\|__|\|_______|\|_______|\|_______|    \|__|        \|__|     \|__|\|_______|
+ 
+            </div>
+            
+        </header>
+
+        <h1>Profile</h1>
+            <p>
+                Samuel Christian | Cyber Security | Bina Nusantara University
+            </p>
+
+        <main>
+            
+            <h1>About me</h1>
+            
+
+            <p>
+                Hello World! My name is Samuel Christian, and I am a student at Bina Nusantara University, majoring in Cyber Security. I have always been interested and enthusiastic about the world of cyber security. I am constantly motivated to learn new things and face challenges in this dynamic field. 
+            </p>
+
+            <h2>Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3>Languages</h3>
+                    <p>C, Python, SQL</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Network Tools</h3>
+                    <p>Nmap, Wireshark</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Web App Testing</h3>
+                    <p>Burp Suite, OWASP ZAP</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Mobile App Testing</h3>
+                    <p>Frida (basic), jadx</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Operating Systems</h3>
+                    <p>Kali Linux, Ubuntu</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Others</h3>
+                    <p>Docker (Basic), Git (Basic)</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Vulnerability Scanners</h3>
+                    <p>Nessus, OpenVAS</p>
+                </div>
+                <div class="skill-card">
+                    <h3>Reverse-Engineering</h3>
+                    <p>GHIDRA, IDA-PRO</p>
+                </div>
+            </div>
+            
+            <h2>Experience</h2>
+            <p>
+                I have applied my knowledge through direct experience in:
+            </p>
+            <ul>
+                <li><strong>Web Penetration Testing:</strong> Honed my skills by conducting web penetration testing exercises on platforms like Hack The Box.</li>
+                <li><strong>Mobile Penetration Testing:</strong> Performed a penetration test on the JAKI application, successfully identifying and reporting vulnerabilities.</li>
+                <li><strong>Threat Modelling:</strong> Utilized a proactive approach to identify and analyze potential threats during the application design phase, helping to build inherently more secure systems.</li>
+            </ul>
+
+
+            <h2>Write-Ups</h2>
+            <div class="writeups-grid">
+    
+                <div class="writeup-card">
+            <h3>Junior.Crypt.2024 CTF - SPCS</h3>
+            <p>
+            Competed in the Junior.Crypt.2024 CTF, solving challenges that involved cryptography, JWT analysis, and decryption techniques.
+            </p>
+            <div class="tags">
+                <span class="tag">WEB-EXPLOITATION</span>
+                <span class="tag">CRYPTOGRAPHY</span>
+                <span class="tag">REVERSE-ENGINEERING</span>
+                <span class="tag">OSINT</span>
+            </div>
+            <a href="https://www.notion.so/Junior-Crypt-2024-CTF-SPCS-b38d75bfd60a4c3093ab6d3a69fdcaf8?source=copy_link" class="writeup-link">View Write-Up &rarr;</a>
+            </div>
+
+            <div class="writeup-card">
+            <h3>Qualification Petir - 2024</h3>
+            <p>
+            In this CTF qualification, I solved a diverse set of challenges across reverse engineering, cryptography, digital forensics, and OSINT. My methods ranged from technical analysis of binaries and network traffic to decrypting ciphers and using unconventional techniques like esoteric programming languages and AI jailbreaking to uncover the flags.
+            </p>
+            <div class="tags">
+                <span class="tag">FORENSIC</span>
+                <span class="tag">MISC</span>
+                <span class="tag">CRYPTOGRAPHY</span>
+                <span class="tag">REVERSE-ENGINEERING</span>
+            </div>
+            <a href="writeup/qualpetir24_Samuel Christian.pdf" class="writeup-link">View Write-Up &rarr;</a>
+            </div>
+
+            <div class="writeup-card">
+            <h3>ALL For ALL Petir - 2024</h3>
+            <p>
+                For this CTF, I focused on forensic challenges by scripting a solution to parse SQL injection logs and reverse-engineering a custom image file format. My approach involved writing Python code to both reconstruct a flag from network attack data and to deobfuscate pixels to recover a hidden image.
+            </p>
+            <div class="tags">
+                    <span class="tag">FORENSIC</span>
+                </div>
+                <a href="writeup/ALL FOR ALL CTF_Samuel Christian.pdf" class="writeup-link">View Write-Up &rarr;</a>
+            </div>
+
+            <div class="writeup-card">
+            <h3>Ctf-Olympic - 2025</h3>
+            <p>
+                In this CTF, I solved web challenges by analyzing both source code and application logic to find vulnerabilities. I obtained the first flag by discovering hardcoded credentials in the backend code, and the second by exploiting a broken access control flaw where a leaked admin token allowed me to retrieve the flag from a privileged endpoint.
+            </p>
+            <div class="tags">
+                    <span class="tag">WEB-EXPLOITATION</span>
+                </div>
+                <a href="https://www.notion.so/Ctf-Olympic-2025-280577eaaa3b80d2b75ad38796c23d33?source=copy_link" class="writeup-link">View Write-Up &rarr;</a>
+            </div>
+
+            </div>
+
+            <h2>Projects</h2>
+            <div class="writeups-grid">
+    
+                <div class="writeup-card">
+            <h3>Python Port Scanner</h3>
+            <p>
+            A simple port scanner script built with Python. This script utilizes multithreading for faster scans and features a user-friendly terminal interface.
+            </p>
+            <a href="https://github.com/shiroi1777/Simple-Python-Port-Scanner" class="writeup-link">View project &rarr;</a>
+            </div>
+
+            <div class="writeup-card">
+            <h3>Python Vulnerability Scanner</h3>
+            <p>
+            A modular, multithreaded vulnerability scanner in Python that checks for open ports and matches service banners against a custom list of vulnerabilities.
+            </p>
+            <a href="https://github.com/shiroi1777/Python-Vulnerability-Scanner" class="writeup-link">View project &rarr;</a>
+            </div>
+
+            </div>
+
+
+             <h2>Education & Activities</h2>
+           <div class="education-grid">
+               <div class="education-column">
+                   <h3>Education</h3>
+                   <div class="edu-info-card">
+                       <p class="edu-highlight-text">2024 - 2027 (Expected)</p>
+                       <p class="edu-main-text">BSc in Cyber Security</p>
+                       <p class="edu-sub-text">Bina Nusantara University</p>
+                   </div>
+               </div>
+               <div class="education-column">
+                   <h3>Organizations</h3>
+                   <div class="edu-info-card">
+                       <ul>
+                        <div>
+                           <li><span class="edu-highlight-text">CSC Human Capital</span> in 2024</li>
+                        </div>
+                       </ul>
+                   </div>
+               </div>
+           </div>
+
+
+
+            <h2>Contact Me</h2>
+            <div style="display: flex; gap: 2rem; align-items: center; margin-bottom: 2rem;">
+                <a href="mailto:samuelchristian.153@gmail.com" target="_blank" title="Email">
+                    <svg width="36" height="36" fill="none" stroke="#dcdcdc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <rect x="3" y="5" width="18" height="14" rx="2"/>
+                        <polyline points="3 7 12 13 21 7"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/samuel-christian-49bab2316" target="_blank" title="LinkedIn">
+                    <svg width="36" height="36" fill="none" stroke="#dcdcdc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <rect x="2" y="2" width="20" height="20" rx="5"/>
+                        <line x1="7" y1="10" x2="7" y2="17"/>
+                        <line x1="7" y1="7" x2="7" y2="7"/>
+                        <line x1="12" y1="17" x2="12" y2="13"/>
+                        <path d="M12 13c0-1.1.9-2 2-2s2 .9 2 2v4"/>
+                    </svg>
+                </a>
+                <a href="https://github.com/shiroi1777" target="_blank" title="GitHub">
+                    <svg width="36" height="36" fill="none" stroke="#dcdcdc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.5 2.87 8.32 6.84 9.67.5.09.68-.22.68-.48 0-.24-.01-.87-.01-1.7-2.78.62-3.37-1.36-3.37-1.36-.45-1.17-1.1-1.48-1.1-1.48-.9-.63.07-.62.07-.62 1 .07 1.53 1.05 1.53 1.05.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.7 0 0 .84-.28 2.75 1.05A9.38 9.38 0 0 1 12 6.84c.85.004 1.71.12 2.51.35 1.91-1.33 2.75-1.05 2.75-1.05.55 1.4.2 2.44.1 2.7.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.07.36.32.68.94.68 1.9 0 1.37-.01 2.47-.01 2.81 0 .27.18.58.69.48A10.01 10.01 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z"/>
+                    </svg>
+                </a>
+            </div>
+
+            </div>
+
+    </main>
+        
+    <hr>
+
+        
+    </div>
+
+</body>
+</html>
